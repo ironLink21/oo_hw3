@@ -1,0 +1,26 @@
+{
+  "AppLayerTesting": {
+    "target": "project"
+  },
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true
+  },
+  "dependencies": {},
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.Net": {
+          "type": "build"
+        },
+        "System.Windows.Forms": {
+          "type": "build"
+        },
+        "System.Drawing": {
+          "type": "build"
+        }
+      }
+    }
+  }
+}

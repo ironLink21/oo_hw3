@@ -1,0 +1,34 @@
+{
+  "AppLayer": {
+    "target": "project"
+  },
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "debugType": "portable"
+  },
+  "dependencies": {},
+  "frameworks": {
+    "net451": {
+      "dependencies": {
+        "System.Runtime.Serialization.Json": "4.0.0"
+      },
+      "frameworkAssemblies": {
+        "System.Net": {
+          "type": "build"
+        },
+        "System.Windows.Forms": {
+          "type": "build"
+        },
+        "System.Drawing": {
+          "type": "build"
+        },
+        "System.Runtime.Serialization": {
+          "type": "build"
+        },
+        "System.Xml": {
+          "type": "build"
+        }
+      }
+    }
+  }
+}

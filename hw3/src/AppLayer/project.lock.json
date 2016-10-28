@@ -1,0 +1,65 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.5.1": {
+      "System.Runtime.Serialization.Json/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "System.Runtime.Serialization.Json/4.0.0": {
+      "sha512": "emhWMQP3sdtkAhD0TOeP3FfjS57sfQMQ2sqA6f2Yj5Gd9jkHV4KsQ2TsoJjghca6d8fur7+REQ6ILBXVdGf/0g==",
+      "type": "package",
+      "path": "System.Runtime.Serialization.Json/4.0.0",
+      "files": [
+        "System.Runtime.Serialization.Json.4.0.0.nupkg.sha512",
+        "System.Runtime.Serialization.Json.nuspec",
+        "lib/DNXCore50/System.Runtime.Serialization.Json.dll",
+        "lib/net45/_._",
+        "lib/netcore50/System.Runtime.Serialization.Json.dll",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "ref/dotnet/System.Runtime.Serialization.Json.dll",
+        "ref/dotnet/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/de/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/es/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/fr/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/it/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/ja/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/ko/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/ru/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/zh-hans/System.Runtime.Serialization.Json.xml",
+        "ref/dotnet/zh-hant/System.Runtime.Serialization.Json.xml",
+        "ref/net45/_._",
+        "ref/netcore50/System.Runtime.Serialization.Json.dll",
+        "ref/netcore50/System.Runtime.Serialization.Json.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "runtimes/win8-aot/lib/netcore50/System.Runtime.Serialization.Json.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [],
+    ".NETFramework,Version=v4.5.1": [
+      "System.Drawing",
+      "System.Net",
+      "System.Runtime.Serialization",
+      "System.Runtime.Serialization.Json >= 4.0.0",
+      "System.Windows.Forms",
+      "System.Xml"
+    ]
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
+}
