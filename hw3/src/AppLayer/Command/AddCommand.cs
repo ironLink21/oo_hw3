@@ -9,7 +9,7 @@ namespace AppLayer.Command
         private const int NormalWidth = 80;
         private const int NormalHeight = 80;
 
-        private readonly string _treeType;
+        private readonly string _starType;
         private Point _location;
         private readonly float _scale;
         internal AddCommand() { }
@@ -19,13 +19,13 @@ namespace AppLayer.Command
         /// 
         /// </summary>
         /// <param name="commandParameters">An array of parameters, where
-        ///     [1]: string     tree type -- a fully qualified resource name
-        ///     [2]: Point      center location for the tree, defaut = top left corner
+        ///     [1]: string     star type -- a fully qualified resource name
+        ///     [2]: Point      center location for the star, defaut = top left corner
         ///     [3]: float      scale factor</param>
         internal AddCommand(params object[] commandParameters)
         {
             if (commandParameters.Length>0)
-                _treeType = commandParameters[0] as string;
+                _starType = commandParameters[0] as string;
 
             if (commandParameters.Length > 1)
                 _location = (Point) commandParameters[1];
@@ -40,23 +40,23 @@ namespace AppLayer.Command
 
         public override void Execute()
         {
-            if (string.IsNullOrWhiteSpace(_treeType) || TargetDrawing==null) return;
+            if (string.IsNullOrWhiteSpace(_starType) || TargetDrawing==null) return;
 
-            Size treeSize = new Size()
+            Size starSize = new Size()
             {
                 Width = Convert.ToInt16(Math.Round(NormalWidth * _scale, 0)),
                 Height = Convert.ToInt16(Math.Round(NormalHeight * _scale, 0))
             };
-            Point treeLocation = new Point(_location.X - treeSize.Width / 2, _location.Y - treeSize.Height / 2);
+            Point starLocation = new Point(_location.X - starSize.Width / 2, _location.Y - starSize.Height / 2);
 
-            TreeExtrinsicState extrinsicState = new TreeExtrinsicState()
+            StarExtrinsicState extrinsicState = new StarExtrinsicState()
             {
-                TreeType = _treeType,
-                Location = treeLocation,
-                Size = treeSize
+                StarType = _starType,
+                Location = starLocation,
+                Size = starSize
             };
-            var tree = TargetDrawing.Factory.GetTree(extrinsicState);
-            TargetDrawing.Add(tree);
+            var star = TargetDrawing.Factory.GetStar(extrinsicState);
+            TargetDrawing.Add(star);
         }
     }
 }

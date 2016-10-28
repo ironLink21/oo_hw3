@@ -15,10 +15,10 @@ namespace AppLayer.Command
 
         public override void Execute()
         {
-            var tree = TargetDrawing?.FindTreeAtPosition(_location);
-            if (tree != null)
+            var star = TargetDrawing?.FindStarAtPosition(_location);
+            if (star != null)
             {
-                tree.IsSelected = !tree.IsSelected;
+                star.IsSelected = !star.IsSelected;
                 TargetDrawing.IsDirty = true;
             }
         }

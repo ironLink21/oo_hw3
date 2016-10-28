@@ -23,12 +23,12 @@
 --reference:/usr/lib/mono/4.5-api/System.dll
 --reference:/usr/lib/mono/4.5-api/System.Core.dll
 --reference:/usr/lib/mono/4.5-api/Microsoft.CSharp.dll
-/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/TreeWithIntrinsicState.cs
-/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/TreeExtrinsicState.cs
-/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/TreeFactory.cs
+/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/StarWithIntrinsicState.cs
+/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/StarExtrinsicState.cs
+/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/StarFactory.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/Drawing.cs
-/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/Tree.cs
-/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/TreeWithAllState.cs
+/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/Star.cs
+/home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/DrawingComponents/StarWithAllState.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/Properties/AssemblyInfo.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/Command/AddCommand.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/src/AppLayer/Command/NewCommand.cs

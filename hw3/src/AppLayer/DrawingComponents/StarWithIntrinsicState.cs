@@ -13,23 +13,23 @@ namespace AppLayer.DrawingComponents
     /// Note that this class is tagged as "internal", which means only components in the AppLayer can acces it.  This helps encapsulate the idea
     /// in the AppLayer and prevent misuse by components in other layers.
     /// </summary>
-    internal class TreeWithIntrinsicState : Tree
+    internal class StarWithIntrinsicState : Star
     {
         public static Color SelectionBackgroundColor { get; set; } = Color.DarkKhaki;
-        public string TreeType { get; set; }
+        public string StarType { get; set; }
         public Bitmap Image { get; private set; }
         public Bitmap ToolImage { get; private set; }
         public Bitmap ToolImageSelected { get; private set; }
 
-        public void LoadFromResource(string treeType, Type referenceTypeForAssembly)
+        public void LoadFromResource(string starType, Type referenceTypeForAssembly)
         {
-            if (string.IsNullOrWhiteSpace(treeType)) return;
+            if (string.IsNullOrWhiteSpace(starType)) return;
 
             Assembly assembly = Assembly.GetAssembly(referenceTypeForAssembly);
 
             if (assembly == null) return;
 
-            using (Stream stream = assembly.GetManifestResourceStream(treeType))
+            using (Stream stream = assembly.GetManifestResourceStream(starType))
             {
                 if (stream != null)
                 {
@@ -49,7 +49,7 @@ namespace AppLayer.DrawingComponents
             get { return false; }
             set
             {
-                throw new ApplicationException("Cannot select a tree with only intrinsic state - the intrinsic state is immutable");
+                throw new ApplicationException("Cannot select a star with only intrinsic state - the intrinsic state is immutable");
             }
         }
 
@@ -59,7 +59,7 @@ namespace AppLayer.DrawingComponents
             get { return new Point(); }
             set
             {
-                throw new ApplicationException("Cannot change a tree with only intrinsic state - the intrinsic state is immutable");
+                throw new ApplicationException("Cannot change a star with only intrinsic state - the intrinsic state is immutable");
             }
         }
 
@@ -68,13 +68,13 @@ namespace AppLayer.DrawingComponents
             get { return new Size(); }
             set
             {
-                throw new ApplicationException("Cannot change a tree with only intrinsic state - the intrinsic state is immutable");
+                throw new ApplicationException("Cannot change a star with only intrinsic state - the intrinsic state is immutable");
             }
         }
 
         public override void Draw(Graphics graphics)
         {
-            throw new ApplicationException("Cannot draw a tree with only intrinsic state");
+            throw new ApplicationException("Cannot draw a star with only intrinsic state");
         }
     }
 }

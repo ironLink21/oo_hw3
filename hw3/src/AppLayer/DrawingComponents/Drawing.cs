@@ -7,58 +7,58 @@ namespace AppLayer.DrawingComponents
 {
     public class Drawing
     {
-        private static readonly DataContractJsonSerializer JsonSerializer = new DataContractJsonSerializer(typeof(List<TreeExtrinsicState>));
+        private static readonly DataContractJsonSerializer JsonSerializer = new DataContractJsonSerializer(typeof(List<StarExtrinsicState>));
 
-        private readonly List<Tree> _trees = new List<Tree>();
+        private readonly List<Star> _stars = new List<Star>();
 
         private readonly object _myLock = new object();
 
-        public TreeFactory Factory { get; set; }
-        public Tree SelectedVar { get; set; }
+        public StarFactory Factory { get; set; }
+        public Star SelectedVar { get; set; }
         public bool IsDirty { get; set; }
-        public int TreeCount => _trees.Count;
+        public int StarCount => _stars.Count;
 
         public void Clear()
         {
             lock (_myLock)
             {
-                _trees.Clear();
+                _stars.Clear();
                 IsDirty = true;
             }
         }
 
-        public void Add(Tree tree)
+        public void Add(Star star)
         {
-            if (tree != null)
+            if (star != null)
             {
                 lock (_myLock)
                 {
-                    _trees.Add(tree);
+                    _stars.Add(star);
                     IsDirty = true;
                 }
             }
         }
 
-        public void RemoveTree(Tree tree)
+        public void RemoveStar(Star star)
         {
-            if (tree != null)
+            if (star != null)
             {
                 lock (_myLock)
                 {
-                    if (SelectedVar == tree)
+                    if (SelectedVar == star)
                         SelectedVar = null;
-                    _trees.Remove(tree);
+                    _stars.Remove(star);
                     IsDirty = true;
                 }
             }
         }
 
-        public Tree FindTreeAtPosition(Point location)
+        public Star FindStarAtPosition(Point location)
         {
-            Tree result;
+            Star result;
             lock (_myLock)
             {
-                result = _trees.FindLast(t => location.X >= t.Location.X &&
+                result = _stars.FindLast(t => location.X >= t.Location.X &&
                                               location.X < t.Location.X + t.Size.Width &&
                                               location.Y >= t.Location.Y &&
                                               location.Y < t.Location.Y + t.Size.Height);
@@ -70,7 +70,7 @@ namespace AppLayer.DrawingComponents
         {
             lock (_myLock)
             {
-                foreach (var t in _trees)
+                foreach (var t in _stars)
                     t.IsSelected = false;
                 IsDirty = true;
             }    
@@ -80,7 +80,7 @@ namespace AppLayer.DrawingComponents
         {
             lock (_myLock)
             {
-                _trees.RemoveAll(t => t.IsSelected);
+                _stars.RemoveAll(t => t.IsSelected);
                 IsDirty = true;
             }
         }
@@ -93,7 +93,7 @@ namespace AppLayer.DrawingComponents
                 if (IsDirty)
                 {
                     graphics.Clear(Color.White);
-                    foreach (var t in _trees)
+                    foreach (var t in _stars)
                         t.Draw(graphics);
                     IsDirty = false;
                     didARedraw = true;
@@ -104,16 +104,16 @@ namespace AppLayer.DrawingComponents
 
         public void LoadFromStream(Stream stream)
         {
-            var extrinsicStates = JsonSerializer.ReadObject(stream) as List<TreeExtrinsicState>;
+            var extrinsicStates = JsonSerializer.ReadObject(stream) as List<StarExtrinsicState>;
             if (extrinsicStates == null) return;
 
             lock (_myLock)
             {
-                _trees.Clear();
-                foreach (TreeExtrinsicState extrinsicState in extrinsicStates)
+                _stars.Clear();
+                foreach (StarExtrinsicState extrinsicState in extrinsicStates)
                 {
-                    Tree tree = Factory.GetTree(extrinsicState);
-                    _trees.Add(tree);
+                    Star star = Factory.GetStar(extrinsicState);
+                    _stars.Add(star);
                 }
                 IsDirty = true;
             }
@@ -121,12 +121,12 @@ namespace AppLayer.DrawingComponents
 
         public void SaveToStream(Stream stream)
         {
-            List<TreeExtrinsicState> extrinsicStates = new List<TreeExtrinsicState>();
+            List<StarExtrinsicState> extrinsicStates = new List<StarExtrinsicState>();
             lock (_myLock)
             {
-                foreach (Tree tree in _trees)
+                foreach (Star star in _stars)
                 {
-                    TreeWithAllState t = tree as TreeWithAllState;
+                    StarWithAllState t = star as StarWithAllState;
                     if (t!=null)
                         extrinsicStates.Add(t.ExtrinsicStatic);                    
                 }

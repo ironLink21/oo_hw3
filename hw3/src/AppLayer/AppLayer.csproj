@@ -52,11 +52,11 @@
     <Compile Include="Command\SaveCommand.cs" />
     <Compile Include="Command\SelectCommand.cs" />
     <Compile Include="DrawingComponents\Drawing.cs" />
-    <Compile Include="DrawingComponents\Tree.cs" />
-    <Compile Include="DrawingComponents\TreeExtrinsicState.cs" />
-    <Compile Include="DrawingComponents\TreeFactory.cs" />
-    <Compile Include="DrawingComponents\TreeWithAllState.cs" />
-    <Compile Include="DrawingComponents\TreeWithIntrinsicState.cs" />
+    <Compile Include="DrawingComponents\Star.cs" />
+    <Compile Include="DrawingComponents\StarExtrinsicState.cs" />
+    <Compile Include="DrawingComponents\StarFactory.cs" />
+    <Compile Include="DrawingComponents\StarWithAllState.cs" />
+    <Compile Include="DrawingComponents\StarWithIntrinsicState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,10 +4,10 @@ using System.Runtime.Serialization;
 namespace AppLayer.DrawingComponents
 {
     [DataContract]
-    public class TreeExtrinsicState
+    public class StarExtrinsicState
     {
         [DataMember]
-        public string TreeType { get; set; }
+        public string StarType { get; set; }
 
         [DataMember]
         public Point Location { get; set; }

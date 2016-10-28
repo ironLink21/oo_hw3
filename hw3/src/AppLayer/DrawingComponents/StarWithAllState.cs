@@ -4,17 +4,17 @@ namespace AppLayer.DrawingComponents
 {
     /// <summary>
     /// This class plays a role in two different patterns: a Flyweight and a Decorator.  For the Flyweight, this
-    /// class represent a "whole" tree that combines both intrinsic state part and the extrinsic state part.
+    /// class represent a "whole" star that combines both intrinsic state part and the extrinsic state part.
     /// Objects of this class only need to exist for short period time, like a drawing session.
     /// 
-    /// For the decorator pattern, this class is a Decorator.  It add the extrinsic state to TreeWithIntrinsic State objects
+    /// For the decorator pattern, this class is a Decorator.  It add the extrinsic state to StarWithIntrinsic State objects
     /// </summary>
-    public class TreeWithAllState : Tree
+    public class StarWithAllState : Star
     {
-        internal TreeWithIntrinsicState IntrinsicState { get; }
-        public TreeExtrinsicState ExtrinsicStatic { get; }
+        internal StarWithIntrinsicState IntrinsicState { get; }
+        public StarExtrinsicState ExtrinsicStatic { get; }
 
-        internal TreeWithAllState(TreeWithIntrinsicState sharedPart, TreeExtrinsicState nonsharedPart)
+        internal StarWithAllState(StarWithIntrinsicState sharedPart, StarExtrinsicState nonsharedPart)
         {
             IntrinsicState = sharedPart;                // From a decorator perspective, this is the decorated object
             ExtrinsicStatic = nonsharedPart;            // From a decorator perspective, this is the added feature or
