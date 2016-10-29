@@ -2,12 +2,12 @@
 
 namespace AppLayer.Command
 {
-    public class LoadCommand : Command
+    public class CmdLoad : Command
     {
         private readonly string _filename;
 
-        internal LoadCommand() { }
-        internal LoadCommand(params object[] commandParameters)
+        internal CmdLoad() { }
+        internal CmdLoad(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
                 _filename = commandParameters[0] as string;
@@ -18,6 +18,13 @@ namespace AppLayer.Command
             StreamReader reader = new StreamReader(_filename);
             TargetDrawing?.LoadFromStream(reader.BaseStream);
             reader.Close();
+        }
+
+        public override void Undo()
+        {
+            // StreamReader reader = new StreamReader(_filename);
+            // TargetDrawing?.LoadFromStream(reader.BaseStream);
+            // reader.Close();
         }
     }
 }

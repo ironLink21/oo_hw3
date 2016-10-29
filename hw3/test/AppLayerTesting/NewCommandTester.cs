@@ -8,13 +8,13 @@ using AppLayer.DrawingComponents;
 namespace AppLayerTesting
 {
     [TestClass]
-    public class NewCommandTester
+    public class CmdNewTester
     {
         [TestMethod]
-        public void NewCommand_NonEmptyDrawing()
+        public void CmdNew_NonEmptyDrawing()
         {
             // Setup a drawing
-            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(NewCommandTester)};
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdNewTester)};
             Drawing drawing = new Drawing();
             CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
             drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) }));
@@ -35,7 +35,7 @@ namespace AppLayerTesting
         }
 
         [TestMethod]
-        public void NewCommand_EmptyDrawing()
+        public void CmdNew_EmptyDrawing()
         {
             Drawing drawing = new Drawing();
             CommandFactory commandFactory = new CommandFactory() { TargetDrawing = drawing };
@@ -50,7 +50,7 @@ namespace AppLayerTesting
         }
 
         [TestMethod]
-        public void NewCommand_NoDrawing()
+        public void CmdNew_NoDrawing()
         {
             CommandFactory commandFactory = new CommandFactory() { TargetDrawing = null };
 

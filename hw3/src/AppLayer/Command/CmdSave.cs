@@ -4,10 +4,10 @@ using AppLayer.DrawingComponents;
 
 namespace AppLayer.Command
 {
-    public class SaveCommand : Command
+    public class CmdSave : Command
     {
         private readonly string _filename;
-        internal SaveCommand(params object[] commandParameters)
+        internal CmdSave(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
                 _filename = commandParameters[0] as string;
@@ -18,6 +18,13 @@ namespace AppLayer.Command
             StreamWriter writer = new StreamWriter(_filename);
             TargetDrawing?.SaveToStream(writer.BaseStream);
             writer.Close();
+        }
+
+        public override void Undo()
+        {
+            // StreamWriter writer = new StreamWriter(_filename);
+            // TargetDrawing?.SaveToStream(writer.BaseStream);
+            // writer.Close();
         }
     }
 }

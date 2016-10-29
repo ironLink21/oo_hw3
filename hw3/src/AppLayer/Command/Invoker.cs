@@ -6,7 +6,6 @@ namespace AppLayer.Command
 {
     public class Invoker
     {
-
         private Thread _worker;
         private readonly Stack<Command> _undoStack = new Stack<Command>();
         private readonly ConcurrentQueue<Command> _todoQueue = new ConcurrentQueue<Command>();
@@ -41,7 +40,6 @@ namespace AppLayer.Command
         public void Undo()
         {
 			// TODO: Pop a command from the _undoStack, and call Undo on that command
-
         }
 
         private void Run()
@@ -58,7 +56,6 @@ namespace AppLayer.Command
 				//				into the queue			
 		                 	_enqueueOccurred.WaitOne(100);
             }
-
         }
     }
 }

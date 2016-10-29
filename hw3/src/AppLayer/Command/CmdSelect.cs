@@ -3,11 +3,11 @@ using AppLayer.DrawingComponents;
 
 namespace AppLayer.Command
 {
-    public class SelectCommand : Command
+    public class CmdSelect : Command
     {
         private readonly Point _location;
          
-        internal SelectCommand(params object[] commandParameters)
+        internal CmdSelect(params object[] commandParameters)
         {
             if (commandParameters.Length>0)
             _location = (Point) commandParameters[0];
@@ -21,6 +21,16 @@ namespace AppLayer.Command
                 star.IsSelected = !star.IsSelected;
                 TargetDrawing.IsDirty = true;
             }
+        }
+
+        public override void Undo()
+        {
+            // var star = TargetDrawing?.FindStarAtPosition(_location);
+            // if (star != null)
+            // {
+            //     star.IsSelected = !star.IsSelected;
+            //     TargetDrawing.IsDirty = true;
+            // }
         }
     }
 }

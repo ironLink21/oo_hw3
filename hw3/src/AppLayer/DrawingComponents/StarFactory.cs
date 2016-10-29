@@ -16,7 +16,9 @@ namespace AppLayer.DrawingComponents
 
             StarWithIntrinsicState starWithIntrinsicState;
             if (_sharedStars.ContainsKey(extrinsicState.StarType))
+            {
                 starWithIntrinsicState = _sharedStars[extrinsicState.StarType];
+            }
             else
             {
                 starWithIntrinsicState = new StarWithIntrinsicState();

@@ -68,7 +68,5 @@ namespace AppLayer.DrawingComponents
         {
             graphics.FillRectangle(HandlesBrush, x - HandleHalfSize, y - HandleHalfSize, HandleHalfSize*2, HandleHalfSize*2);
         }
-
     }
-
 }

@@ -53,7 +53,6 @@ namespace AppLayer.DrawingComponents
             }
         }
 
-
         public override Point Location
         {
             get { return new Point(); }

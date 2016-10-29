@@ -18,5 +18,6 @@ namespace AppLayer.Command
         public Drawing TargetDrawing { get; set; }      // "Receiver" in the Command Pattern
 
         public abstract void Execute();
+        public abstract void Undo();
     }
 }

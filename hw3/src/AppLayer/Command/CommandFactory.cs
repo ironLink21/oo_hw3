@@ -25,7 +25,7 @@ namespace AppLayer.Command
         ///             Deselect
         ///             Load
         ///             Save</param>
-        /// <param name="commandParameters">An array of optional parametesr whose sementics depedent on the command type
+        /// <param name="commandParameters">An array of optional parameters whose sementics depedent on the command type
         ///     For new, no additional parameters needed
         ///     For add, 
         ///         [0]: Type       reference type for assembly containing the star type resource
@@ -39,7 +39,9 @@ namespace AppLayer.Command
         ///     For load,
         ///         [0]: string     filename of file to load from  
         ///     For save,
-        ///         [0]: string     filename of file to save to  
+        ///         [0]: string     filename of file to save to
+        ///     For undo,
+        ///         [0]: string     filename of file to save to -- TODO: need to add in this 
         /// <returns></returns>
         public virtual Command Create(string commandType, params object[] commandParameters)
         {
@@ -49,30 +51,35 @@ namespace AppLayer.Command
             switch (commandType.Trim().ToUpper())
             {
                 case "NEW":
-                    command = new NewCommand();
+                    command = new CmdNew();
                     break;
                 case "ADD":
-                    command = new AddCommand(commandParameters);
+                    command = new CmdAdd(commandParameters);
                     break;
                 case "REMOVE":
-                    command = new RemoveSelectedCommand();
+                    command = new CmdRemoveSelected();
                     break;
                 case "SELECT":
-                    command = new SelectCommand(commandParameters);
+                    command = new CmdSelect(commandParameters);
                     break;
                 case "DESELECT":
-                    command = new DeselectAllCommand();
+                    command = new CmdDeselectAll();
                     break;
                 case "LOAD":
-                    command = new LoadCommand(commandParameters);
+                    command = new CmdLoad(commandParameters);
                     break;
                 case "SAVE":
-                    command = new SaveCommand(commandParameters);
+                    command = new CmdSave(commandParameters);
+                    break;
+                case "UNDO":
+                    command = new CmdSave(commandParameters);
                     break;
             }
 
             if (command!=null)
+            {
                 command.TargetDrawing = TargetDrawing;
+            }
 
             return command;
         }
