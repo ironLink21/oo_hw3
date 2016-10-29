@@ -128,7 +128,7 @@ namespace AppLayer.DrawingComponents
                 {
                     StarWithAllState t = star as StarWithAllState;
                     if (t!=null)
-                        extrinsicStates.Add(t.ExtrinsicStatic);                    
+                        extrinsicStates.Add(t.ExtrinsicState);                    
                 }
             }
             JsonSerializer.WriteObject(stream, extrinsicStates);

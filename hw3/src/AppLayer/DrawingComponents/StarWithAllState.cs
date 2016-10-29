@@ -12,31 +12,31 @@ namespace AppLayer.DrawingComponents
     public class StarWithAllState : Star
     {
         internal StarWithIntrinsicState IntrinsicState { get; }
-        public StarExtrinsicState ExtrinsicStatic { get; }
+        public StarExtrinsicState ExtrinsicState { get; }
 
         internal StarWithAllState(StarWithIntrinsicState sharedPart, StarExtrinsicState nonsharedPart)
         {
             IntrinsicState = sharedPart;                // From a decorator perspective, this is the decorated object
-            ExtrinsicStatic = nonsharedPart;            // From a decorator perspective, this is the added feature or
+            ExtrinsicState = nonsharedPart;            // From a decorator perspective, this is the added feature or
                                                         // capability that this object (a decorator) is adding
         }
 
         public override bool IsSelected {
-            get { return ExtrinsicStatic.IsSelected;  }
-            set { ExtrinsicStatic.IsSelected = value;  }
+            get { return ExtrinsicState.IsSelected;  }
+            set { ExtrinsicState.IsSelected = value;  }
         }
 
         public override Point Location
         {
-            get { return ExtrinsicStatic.Location; }
-            set { ExtrinsicStatic.Location = value; }
+            get { return ExtrinsicState.Location; }
+            set { ExtrinsicState.Location = value; }
         }
 
 
         public override Size Size
         {
-            get { return ExtrinsicStatic.Size; }
-            set { ExtrinsicStatic.Size = value; }
+            get { return ExtrinsicState.Size; }
+            set { ExtrinsicState.Size = value; }
         }
 
         public override void Draw(Graphics graphics)
@@ -44,23 +44,23 @@ namespace AppLayer.DrawingComponents
             if (graphics == null || IntrinsicState?.Image == null) return;
 
             graphics.DrawImage(IntrinsicState.Image,
-                new Rectangle(ExtrinsicStatic.Location.X, ExtrinsicStatic.Location.Y, ExtrinsicStatic.Size.Width, ExtrinsicStatic.Size.Height),
+                new Rectangle(ExtrinsicState.Location.X, ExtrinsicState.Location.Y, ExtrinsicState.Size.Width, ExtrinsicState.Size.Height),
                 0, 0, IntrinsicState.Image.Width, IntrinsicState.Image.Height,
                 GraphicsUnit.Pixel);
 
-            if (ExtrinsicStatic.IsSelected)
+            if (ExtrinsicState.IsSelected)
             {
                 graphics.DrawRectangle(
                     SelectedPen,
-                    ExtrinsicStatic.Location.X,
-                    ExtrinsicStatic.Location.Y,
-                    ExtrinsicStatic.Size.Width,
-                    ExtrinsicStatic.Size.Height);
+                    ExtrinsicState.Location.X,
+                    ExtrinsicState.Location.Y,
+                    ExtrinsicState.Size.Width,
+                    ExtrinsicState.Size.Height);
 
-                DrawActionHandle(graphics, ExtrinsicStatic.Location.X, ExtrinsicStatic.Location.Y);
-                DrawActionHandle(graphics, ExtrinsicStatic.Location.X + ExtrinsicStatic.Size.Width, ExtrinsicStatic.Location.Y);
-                DrawActionHandle(graphics, ExtrinsicStatic.Location.X, ExtrinsicStatic.Location.Y + ExtrinsicStatic.Size.Height);
-                DrawActionHandle(graphics, ExtrinsicStatic.Location.X + ExtrinsicStatic.Size.Width, ExtrinsicStatic.Location.Y + ExtrinsicStatic.Size.Height);
+                DrawActionHandle(graphics, ExtrinsicState.Location.X, ExtrinsicState.Location.Y);
+                DrawActionHandle(graphics, ExtrinsicState.Location.X + ExtrinsicState.Size.Width, ExtrinsicState.Location.Y);
+                DrawActionHandle(graphics, ExtrinsicState.Location.X, ExtrinsicState.Location.Y + ExtrinsicState.Size.Height);
+                DrawActionHandle(graphics, ExtrinsicState.Location.X + ExtrinsicState.Size.Width, ExtrinsicState.Location.Y + ExtrinsicState.Size.Height);
             }
         }
 
