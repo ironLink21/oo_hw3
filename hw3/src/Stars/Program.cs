@@ -1,5 +1,8 @@
 ﻿using System;
 
+using AppLayer.Command;
+using AppLayer.DrawingComponents;
+
 namespace Space
 {
     public class Program

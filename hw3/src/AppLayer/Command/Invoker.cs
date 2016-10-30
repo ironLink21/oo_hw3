@@ -24,43 +24,50 @@ namespace AppLayer.Command
             _keepGoing = false;
         }
 
-        public void EnqueueCommandForExecution(Command cmd)
+        public void EnqueueCmd(Command cmd)
         {
             if (cmd != null)
             {
-				// TODO: Place the cmd into the _todoQueue
- 
+				// Place the cmd into the _todoQueue
+				_todoQueue.Enqueue(cmd);
+
 				// Raise signal indicating that something was placed into the queue.  This wakes up the other thread,
 				// if it is waiting for the something to be placed into the queue
                 _enqueueOccurred.Set();
             }
-
         }
 
         public void Undo()
         {
-			// TODO: Pop a command from the _undoStack, and call Undo on that command
+			// Pop a command from the _undoStack, and call Undo on that command
+			Command cmd = _undoStack.Pop();
+			cmd.Undo();
         }
 
         private void Run()
         {
             while (_keepGoing)
             {
-				// TODO: Try to get a command out of the queue.
-				//		 If you got a command,
-				//				Execute the command.  Be sure that the execute method for the command
-				//					saves the necessary state information for an undo 
-				//				then Push it onto the undoStack.
-				//		 Else there was no command in the queue, execute the following statement, which
-				//				causes the thread to wait for up to 100 ms for something to be placed
-				//				into the queue			
-		                 	_enqueueOccurred.WaitOne(100);
+				Command cmd;
+				// Try to get a command out of the queue.
+				// If you got a command,
+				if(_todoQueue.TryDequeue(out cmd))
+				{
+					// cmd = _todoQueue.Dequeue();
+					// Execute the command.  Be sure that the execute method for the command
+					// saves the necessary state information for an undo 
+					// then Push it onto the undoStack.
+					cmd.Execute();
+					_undoStack.Push(cmd);
+				}
+				else 
+				{
+					// Else there was no command in the queue, execute the following statement, which
+					// causes the thread to wait for up to 100 ms for something to be placed
+					// into the queue
+					_enqueueOccurred.WaitOne(100);
+				}
             }
         }
     }
 }
-
-
-
-
-

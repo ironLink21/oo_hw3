@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Drawing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 using AppLayer.Command;
 using AppLayer.DrawingComponents;
 
 namespace AppLayerTesting
 {
-    [TestClass]
     public class CmdNewTester
     {
-        [TestMethod]
+        [Fact]
         public void CmdNew_NonEmptyDrawing()
         {
             // Setup a drawing
@@ -34,7 +33,7 @@ namespace AppLayerTesting
             Assert.AreEqual(0, drawing.StarCount);            
         }
 
-        [TestMethod]
+        [Fact]
         public void CmdNew_EmptyDrawing()
         {
             Drawing drawing = new Drawing();
@@ -46,10 +45,9 @@ namespace AppLayerTesting
             Assert.IsNotNull(newCmd);
             newCmd.Execute();
             Assert.AreEqual(0, drawing.StarCount);
-
         }
 
-        [TestMethod]
+        [Fact]
         public void CmdNew_NoDrawing()
         {
             CommandFactory commandFactory = new CommandFactory() { TargetDrawing = null };
@@ -59,6 +57,5 @@ namespace AppLayerTesting
             newCmd.Execute();
             // This didn't throw an exception, then it worked as expected
         }
-
     }
 }

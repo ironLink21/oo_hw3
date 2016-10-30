@@ -4,23 +4,39 @@
   },
   "version": "1.0.0-*",
   "buildOptions": {
-    "debugType": "portable",
-    "emitEntryPoint": true
+    "debugType": "portable"
   },
-  "dependencies": {},
+  "dependencies": {
+    "System.Runtime.Serialization.Primitives": "4.1.1",
+    "xunit": "2.1.0",
+    "dotnet-test-xunit": "1.0.0-rc2-build10015",
+    "AppLayer": {
+      "target": "project"
+    }
+  },
+  "testRunner": "xunit",
   "frameworks": {
     "net451": {
       "frameworkAssemblies": {
-        "System.Net": {
-          "type": "build"
-        },
-        "System.Windows.Forms": {
-          "type": "build"
-        },
         "System.Drawing": {
+          "type": "build"
+        },
+        "System.Runtime.Serialization": {
           "type": "build"
         }
       }
-    }
+    },
+    // "netcoreapp1.0": {
+    //   "dependencies": {
+    //     "Microsoft.NETCore.App": {
+    //       "type": "platform",
+    //       "version": "1.0.1"
+    //     }
+    //   },
+    //   "imports": [
+    //     "dotnet5.4",
+    //     "portable-net451+win8"
+    //   ]
+    // }
   }
 }

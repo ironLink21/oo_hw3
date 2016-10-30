@@ -40,8 +40,6 @@ namespace AppLayer.Command
         ///         [0]: string     filename of file to load from  
         ///     For save,
         ///         [0]: string     filename of file to save to
-        ///     For undo,
-        ///         [0]: string     filename of file to save to -- TODO: need to add in this 
         /// <returns></returns>
         public virtual Command Create(string commandType, params object[] commandParameters)
         {
@@ -69,9 +67,6 @@ namespace AppLayer.Command
                     command = new CmdLoad(commandParameters);
                     break;
                 case "SAVE":
-                    command = new CmdSave(commandParameters);
-                    break;
-                case "UNDO":
                     command = new CmdSave(commandParameters);
                     break;
             }

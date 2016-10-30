@@ -46,7 +46,9 @@ namespace AppLayer.DrawingComponents
                 lock (_myLock)
                 {
                     if (SelectedVar == star)
+                    {
                         SelectedVar = null;
+                    }
                     _stars.Remove(star);
                     IsDirty = true;
                 }
@@ -71,7 +73,9 @@ namespace AppLayer.DrawingComponents
             lock (_myLock)
             {
                 foreach (var t in _stars)
+                {
                     t.IsSelected = false;
+                }
                 IsDirty = true;
             }    
         }
@@ -94,7 +98,9 @@ namespace AppLayer.DrawingComponents
                 {
                     graphics.Clear(Color.White);
                     foreach (var t in _stars)
+                    {
                         t.Draw(graphics);
+                    }
                     IsDirty = false;
                     didARedraw = true;
                 }
@@ -128,7 +134,9 @@ namespace AppLayer.DrawingComponents
                 {
                     StarWithAllState t = star as StarWithAllState;
                     if (t!=null)
-                        extrinsicStates.Add(t.ExtrinsicState);                    
+                    {
+                        extrinsicStates.Add(t.ExtrinsicState);
+                    }                    
                 }
             }
             JsonSerializer.WriteObject(stream, extrinsicStates);
