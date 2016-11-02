@@ -1,11 +1,10 @@
 {
-  "Stars": {
+  "AppLayer": {
     "target": "project"
   },
   "version": "1.0.0-*",
   "buildOptions": {
-    "debugType": "portable",
-    "emitEntryPoint": true
+    "debugType": "portable"
   },
   "dependencies": {
     "AppLayer": {
@@ -13,15 +12,15 @@
     }
   },
   "frameworks": {
-    "net451": {
+    "net452":{
       "dependencies": {
         "System.Runtime.Serialization.Json": "4.0.0"
       },
       "frameworkAssemblies": {
-        "System.Net": {
+        "System.Windows.Forms": {
           "type": "build"
         },
-        "System.Windows.Forms": {
+        "System.Net": {
           "type": "build"
         },
         "System.Drawing": {

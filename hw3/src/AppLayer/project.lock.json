@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.1": {
+    ".NETFramework,Version=v4.5.2": {
       "System.Runtime.Serialization.Json/4.0.0": {
         "type": "package",
         "compile": {
@@ -51,7 +51,7 @@
   },
   "projectFileDependencyGroups": {
     "": [],
-    ".NETFramework,Version=v4.5.1": [
+    ".NETFramework,Version=v4.5.2": [
       "System.Drawing",
       "System.Net",
       "System.Runtime.Serialization",
