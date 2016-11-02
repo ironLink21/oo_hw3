@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    ".NETFramework,Version=v4.5.2": {
+    ".NETFramework,Version=v4.6.1": {
       "System.Runtime.Serialization.Json/4.0.0": {
         "type": "package",
         "compile": {
@@ -14,7 +14,7 @@
       },
       "AppLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.2",
+        "framework": ".NETFramework,Version=v4.6.1",
         "dependencies": {
           "System.Runtime.Serialization.Json": "4.0.0"
         },
@@ -71,7 +71,7 @@
     "": [
       "AppLayer"
     ],
-    ".NETFramework,Version=v4.5.2": [
+    ".NETFramework,Version=v4.6.1": [
       "System.Drawing",
       "System.Net",
       "System.Runtime.Serialization",

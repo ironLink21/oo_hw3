@@ -14,8 +14,8 @@
 --informational-version:1.0.0
 --target-framework:.NETFramework,Version=v4.6.1
 --reference:/usr/lib/mono/4.5/Facades/System.Runtime.Serialization.Json.dll
---reference:/usr/lib/mono/4.5/System.Net.dll
 --reference:/usr/lib/mono/4.5/System.Windows.Forms.dll
+--reference:/usr/lib/mono/4.5/System.Net.dll
 --reference:/usr/lib/mono/4.5/System.Drawing.dll
 --reference:/usr/lib/mono/4.5/System.Runtime.Serialization.dll
 --reference:/usr/lib/mono/4.5/System.Xml.dll
