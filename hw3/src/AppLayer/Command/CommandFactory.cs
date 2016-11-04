@@ -44,6 +44,8 @@ namespace AppLayer.Command
         public virtual Command Create(string commandType, params object[] commandParameters)
         {
             if (string.IsNullOrWhiteSpace(commandType)) return null;
+            if ((commandType == "ADD" || commandType == "SELECT" || commandType == "LOAD" || commandType == "SAVE") && 
+                (commandParameters == null || commandParameters.Length == 0)) return null;
 
             Command command=null;
             switch (commandType.Trim().ToUpper())

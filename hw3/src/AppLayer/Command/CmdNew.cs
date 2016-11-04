@@ -13,7 +13,7 @@ namespace AppLayer.Command
 
         public override void Undo()
         {
-            // TargetDrawing?.Clear();
+            // this function really won't do anything
         }
     }
 }

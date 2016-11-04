@@ -9,7 +9,7 @@ namespace AppLayer.DrawingComponents
     {
         private static readonly DataContractJsonSerializer JsonSerializer = new DataContractJsonSerializer(typeof(List<StarExtrinsicState>));
 
-        private readonly List<Star> _stars = new List<Star>();
+        public static List<Star> _stars = new List<Star>();
 
         private readonly object _myLock = new object();
 
@@ -36,6 +36,16 @@ namespace AppLayer.DrawingComponents
                     _stars.Add(star);
                     IsDirty = true;
                 }
+            }
+        }
+
+        public void RemoveLastStar()
+        {
+            lock (_myLock)
+            {
+                int lastIndx = _stars.Count-1;
+                _stars.RemoveAt(lastIndx);
+                IsDirty = true;
             }
         }
 
@@ -80,13 +90,28 @@ namespace AppLayer.DrawingComponents
             }    
         }
 
-        public void DeleteAllSelected()
+        public void SelectAll()
         {
             lock (_myLock)
             {
+                foreach (var t in _stars)
+                {
+                    t.IsSelected = true;
+                }
+                IsDirty = true;
+            }    
+        }
+
+        public List<Star> DeleteAllSelected()
+        {
+            List<Star> starList;
+            lock (_myLock)
+            {
+                starList = _stars.FindAll(t => t.IsSelected);
                 _stars.RemoveAll(t => t.IsSelected);
                 IsDirty = true;
             }
+            return starList;
         }
 
         public bool Draw(Graphics graphics)
@@ -140,6 +165,22 @@ namespace AppLayer.DrawingComponents
                 }
             }
             JsonSerializer.WriteObject(stream, extrinsicStates);
+        }
+
+        public List<Star> GetSelected()
+        {
+            List<Star> starList = new List<Star>();
+            lock (_myLock)
+            {
+                foreach (Star star in _stars)
+                {
+                    if (star.IsSelected)
+                    {
+                        starList.Add(star);
+                    }                    
+                }
+            }
+            return starList;
         }
 
     }

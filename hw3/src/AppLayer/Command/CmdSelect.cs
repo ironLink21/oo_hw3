@@ -25,12 +25,12 @@ namespace AppLayer.Command
 
         public override void Undo()
         {
-            // var star = TargetDrawing?.FindStarAtPosition(_location);
-            // if (star != null)
-            // {
-            //     star.IsSelected = !star.IsSelected;
-            //     TargetDrawing.IsDirty = true;
-            // }
+            var star = TargetDrawing?.FindStarAtPosition(_location);
+            if (star != null)
+            {
+                star.IsSelected = !star.IsSelected;
+                TargetDrawing.IsDirty = true;
+            }
         }
     }
 }

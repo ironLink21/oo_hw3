@@ -9,7 +9,7 @@ namespace AppLayerTesting
 {
     public class CmdNewTester
     {
-         [FactAttribute]
+         [Fact]
         public void CmdNew_NonEmptyDrawing()
         {
             // Setup a drawing
@@ -23,7 +23,7 @@ namespace AppLayerTesting
             Assert.Equal(4, drawing.StarCount);
 
             // setup a New command
-            Command newCmd = commandFactory.Create("new");
+            Command newCmd = commandFactory.Create("NEW");
             Assert.NotNull(newCmd);
 
             // Stimulate (Execute newCmd.Execute)
@@ -33,7 +33,7 @@ namespace AppLayerTesting
             Assert.Equal(0, drawing.StarCount);            
         }
 
-         [FactAttribute]
+         [Fact]
         public void CmdNew_EmptyDrawing()
         {
             Drawing drawing = new Drawing();
@@ -41,18 +41,18 @@ namespace AppLayerTesting
 
             Assert.Equal(0, drawing.StarCount);
 
-            Command newCmd = commandFactory.Create("new");
+            Command newCmd = commandFactory.Create("NEW");
             Assert.NotNull(newCmd);
             newCmd.Execute();
             Assert.Equal(0, drawing.StarCount);
         }
 
-         [FactAttribute]
+         [Fact]
         public void CmdNew_NoDrawing()
         {
             CommandFactory commandFactory = new CommandFactory() { TargetDrawing = null };
 
-            Command newCmd = commandFactory.Create("new");
+            Command newCmd = commandFactory.Create("NEW");
             Assert.NotNull(newCmd);
             newCmd.Execute();
             // This didn't throw an exception, then it worked as expected

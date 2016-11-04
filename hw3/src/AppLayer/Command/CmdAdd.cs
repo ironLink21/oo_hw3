@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections.Generic;
+
 using AppLayer.DrawingComponents;
 
 namespace AppLayer.Command
@@ -12,7 +14,7 @@ namespace AppLayer.Command
         private readonly string _starType;
         private Point _location;
         private readonly float _scale;
-        internal CmdAdd() { }
+        internal CmdAdd() {}
 
         /// <summary>
         /// Constructor
@@ -57,6 +59,7 @@ namespace AppLayer.Command
                 Width = Convert.ToInt16(Math.Round(NormalWidth * _scale, 0)),
                 Height = Convert.ToInt16(Math.Round(NormalHeight * _scale, 0))
             };
+
             Point starLocation = new Point(_location.X - starSize.Width / 2, _location.Y - starSize.Height / 2);
 
             StarExtrinsicState extrinsicState = new StarExtrinsicState()
@@ -65,29 +68,17 @@ namespace AppLayer.Command
                 Location = starLocation,
                 Size = starSize
             };
+
             var star = TargetDrawing.Factory.GetStar(extrinsicState);
-            TargetDrawing.Add(star);
+
+            // TargetDrawing.Add(star);
         }
 
         public override void Undo()
         {
-            // if (string.IsNullOrWhiteSpace(_starType) || TargetDrawing==null) return;
-
-            // Size starSize = new Size()
-            // {
-            //     Width = Convert.ToInt16(Math.Round(NormalWidth * _scale, 0)),
-            //     Height = Convert.ToInt16(Math.Round(NormalHeight * _scale, 0))
-            // };
-            // Point starLocation = new Point(_location.X - starSize.Width / 2, _location.Y - starSize.Height / 2);
-
-            // StarExtrinsicState extrinsicState = new StarExtrinsicState()
-            // {
-            //     StarType = _starType,
-            //     Location = starLocation,
-            //     Size = starSize
-            // };
-            // var star = TargetDrawing.Factory.GetStar(extrinsicState);
-            // TargetDrawing.Add(star);
+            if (TargetDrawing==null) return;
+            
+            TargetDrawing.RemoveLastStar();
         }
     }
 }

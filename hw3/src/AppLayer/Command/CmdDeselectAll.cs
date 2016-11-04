@@ -13,7 +13,7 @@ namespace AppLayer.Command
 
         public override void Undo()
         {
-            // TargetDrawing?.DeselectAll();
+            TargetDrawing?.SelectAll();
         }
     }
 }

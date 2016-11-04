@@ -12,6 +12,7 @@ namespace AppLayer.DrawingComponents
 
         public StarWithAllState GetStar(StarExtrinsicState extrinsicState)
         {
+            // TODO: this function is having a problem I don't know where 
             string resourceName = string.Format(ResourceNamePattern, extrinsicState.StarType);
 
             StarWithIntrinsicState starWithIntrinsicState;
