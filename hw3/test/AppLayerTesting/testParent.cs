@@ -21,10 +21,10 @@ namespace AppLayerTesting
 
             if(isMultiStars)
             {
-                star = starFactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) });
+                star = starFactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(20,20), Size  = new Size(20, 20) });
                 drawing.Add(star);
 
-                star = starFactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) });
+                star = starFactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(30,30), Size  = new Size(40, 40) });
 
                 drawing.Add(star);
             }

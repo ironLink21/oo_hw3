@@ -10,6 +10,12 @@ namespace AppLayerTesting
     public class CmdSelectedTester : testParent
     {
         [Fact]
+        private void function_runner()
+        {
+            CmdSelected();
+            CmdSelected_undo();
+        }
+        
         public void CmdSelected()
         {
             testSetup(false);
@@ -22,7 +28,6 @@ namespace AppLayerTesting
             Assert.Equal(true, star.IsSelected);
         }
 
-        [Fact]
         public void CmdSelected_undo() 
         {
             testSetup(false);
@@ -35,6 +40,6 @@ namespace AppLayerTesting
 
             Star star = commandFactory.TargetDrawing.FindStarAtPosition(new Point(10,10));
             Assert.Equal(false, star.IsSelected);
-        }
+        }        
     }
 }

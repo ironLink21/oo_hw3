@@ -24,7 +24,10 @@ namespace AppLayer.Command
         ///             Select
         ///             Deselect
         ///             Load
-        ///             Save</param>
+        ///             Save
+        ///             MOVE
+        ///             SCALE
+        ///             DUPLICATE</param>
         /// <param name="commandParameters">An array of optional parameters whose sementics depedent on the command type
         ///     For new, no additional parameters needed
         ///     For add, 
@@ -44,7 +47,7 @@ namespace AppLayer.Command
         public virtual Command Create(string commandType, params object[] commandParameters)
         {
             if (string.IsNullOrWhiteSpace(commandType)) return null;
-            if ((commandType == "ADD" || commandType == "SELECT" || commandType == "LOAD" || commandType == "SAVE") && 
+            if ((commandType == "ADD" || commandType == "SELECT" || commandType == "LOAD" || commandType == "SAVE" || commandType == "MOVE" || commandType == "SCALE" || commandType == "DUPLICATE") && 
                 (commandParameters == null || commandParameters.Length == 0)) return null;
 
             Command command=null;
@@ -70,6 +73,15 @@ namespace AppLayer.Command
                     break;
                 case "SAVE":
                     command = new CmdSave(commandParameters);
+                    break;
+                case "MOVE":
+                    command = new CmdMove(commandParameters);
+                    break;
+                case "SCALE":
+                    command = new CmdScale(commandParameters);
+                    break;
+                case "DUPLICATE":
+                    command = new CmdDuplicate(commandParameters);
                     break;
             }
 

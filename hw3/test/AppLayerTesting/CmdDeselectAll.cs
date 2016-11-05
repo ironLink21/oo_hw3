@@ -11,6 +11,12 @@ namespace AppLayerTesting
     public class CmdDeselectAll : testParent
     {
         [Fact]
+        private void function_runner()
+        {
+            CmdDeselectAll_DESELECT();
+            CmdDeselectAll_DESELECT_UNDO();
+        }
+        
         public void CmdDeselectAll_DESELECT()
         {
             List<Star> starList = new List<Star>();
@@ -28,7 +34,6 @@ namespace AppLayerTesting
             Assert.Equal(0, starList.Count);
         }
 
-        [Fact]
         public void CmdDeselectAll_DESELECT_UNDO()
         {
             List<Star> starList = new List<Star>();

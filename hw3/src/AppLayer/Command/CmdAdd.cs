@@ -71,7 +71,7 @@ namespace AppLayer.Command
 
             var star = TargetDrawing.Factory.GetStar(extrinsicState);
 
-            // TargetDrawing.Add(star);
+            TargetDrawing.Add(star);
         }
 
         public override void Undo()

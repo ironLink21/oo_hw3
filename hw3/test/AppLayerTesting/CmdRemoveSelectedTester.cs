@@ -11,6 +11,12 @@ namespace AppLayerTesting
     public class CmdRemoveSelectedTester : testParent
     {
         [Fact]
+        private void function_runner()
+        {
+            CmdRemoveSelected();
+            CmdRemoveSelected_UNDO();
+        }
+
         public void CmdRemoveSelected()
         {
             List<Star> starList = new List<Star>();
@@ -26,7 +32,6 @@ namespace AppLayerTesting
             Assert.Equal(0, starList.Count);  
         }
 
-        [Fact]
         public void CmdRemoveSelected_UNDO()
         {
             List<Star> starList = new List<Star>();

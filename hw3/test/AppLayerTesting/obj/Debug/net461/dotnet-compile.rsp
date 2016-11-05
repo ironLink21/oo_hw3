@@ -65,9 +65,12 @@
 --reference:/usr/lib/mono/4.5/System.Drawing.dll
 --reference:/usr/lib/mono/4.5/System.Runtime.Serialization.dll
 /home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/Tests.cs
+/home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/CmdMoveTester.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/CmdSelectedTester.cs
+/home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/CmdScaleTester.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/CmdAddTester.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/testParent.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/CmdRemoveSelectedTester.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/CmdDeselectAll.cs
 /home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/CmdNewTester.cs
+/home/seth/Documents/Fall2016/oo/assign3/hw3/test/AppLayerTesting/CmdDuplicateTester.cs

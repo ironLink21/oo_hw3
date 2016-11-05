@@ -9,7 +9,14 @@ namespace AppLayerTesting
 {
     public class CmdNewTester
     {
-         [Fact]
+        [Fact]
+        private void function_runner()
+        {
+            CmdNew_NonEmptyDrawing();
+            CmdNew_EmptyDrawing();
+            CmdNew_NoDrawing();
+        }
+        
         public void CmdNew_NonEmptyDrawing()
         {
             // Setup a drawing
@@ -33,7 +40,6 @@ namespace AppLayerTesting
             Assert.Equal(0, drawing.StarCount);            
         }
 
-         [Fact]
         public void CmdNew_EmptyDrawing()
         {
             Drawing drawing = new Drawing();
@@ -47,7 +53,6 @@ namespace AppLayerTesting
             Assert.Equal(0, drawing.StarCount);
         }
 
-         [Fact]
         public void CmdNew_NoDrawing()
         {
             CommandFactory commandFactory = new CommandFactory() { TargetDrawing = null };

@@ -9,7 +9,14 @@ namespace AppLayerTesting
 {
     public class CmdAddTester : testParent
     {
-        [Fact]
+        [FactAttribute]
+        private void function_runner()
+        {
+            CmdAdd_add_not_null();
+            CmdAdd_add_null();
+            CmdAdd_undo();
+        }
+        
         public void CmdAdd_add_not_null()
         {
             testSetup(false);
@@ -21,8 +28,7 @@ namespace AppLayerTesting
             Assert.Equal(1, drawing.StarCount);
         }
 
-        [Fact]
-        public void CmdAdd_add_null() 
+        public void CmdAdd_add_null()
         {
             Drawing drawing = new Drawing();
             CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
@@ -36,7 +42,6 @@ namespace AppLayerTesting
             Assert.Equal(null, addCmd);
         }
 
-        [Fact]
         public void CmdAdd_undo()
         {
             testSetup(false);

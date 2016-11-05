@@ -7,6 +7,7 @@ namespace AppLayer.DrawingComponents
     {
         public string ResourceNamePattern { get; set; }
         public Type ReferenceType { get; set; }
+        public string StarType { get; set; }
 
         private readonly Dictionary<string, StarWithIntrinsicState> _sharedStars = new Dictionary<string, StarWithIntrinsicState>();
 
