@@ -7,9 +7,14 @@ using AppLayer.DrawingComponents;
 
 namespace AppLayerTesting
 {
-    public class CmdAddTester : testParent
+    public class CmdAddTester
     {
-        [FactAttribute]
+        protected CommandFactory commandFactory = new CommandFactory();
+        StarFactory starFactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdAddTester)};
+        protected Drawing drawing = new Drawing();
+        protected Star star;
+
+        [Fact]
         private void function_runner()
         {
             CmdAdd_add_not_null();
@@ -19,20 +24,27 @@ namespace AppLayerTesting
         
         public void CmdAdd_add_not_null()
         {
-            testSetup(false);
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdAddTester)};
+            Drawing drawing = new Drawing();
+            CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) }));
+            Assert.Equal(1, drawing.StarCount);
+
             Command addCmd = commandFactory.Create("ADD", "Star-01");
             Assert.NotNull(addCmd);
 
             addCmd.Execute();
 
-            Assert.Equal(1, drawing.StarCount);
+            Assert.Equal(2, drawing.StarCount);
         }
 
         public void CmdAdd_add_null()
         {
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdAddTester)};
             Drawing drawing = new Drawing();
             CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
-            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdAddTester)};
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) }));
+            Assert.Equal(1, drawing.StarCount);
 
             // creates star obj and stores in variable
             Star tempStar = Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) });
@@ -44,14 +56,19 @@ namespace AppLayerTesting
 
         public void CmdAdd_undo()
         {
-            testSetup(false);
-            Command addCmd = commandFactory.Create("ADD", "Star-01");
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdAddTester)};
+            Drawing drawing = new Drawing();
+            CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) }));
+            Assert.Equal(1, drawing.StarCount);
+
+            Command addCmd = commandFactory.Create("ADD", "Star-01",new Point(10,10), 1.0);
 
             addCmd.Execute();
 
             addCmd.Undo();
 
-            Assert.Equal(2, drawing.StarCount);
+            Assert.Equal(1, drawing.StarCount);
         }
     }
 }

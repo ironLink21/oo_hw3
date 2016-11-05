@@ -8,7 +8,7 @@ using AppLayer.DrawingComponents;
 
 namespace AppLayerTesting
 {
-    public class CmdRemoveSelectedTester : testParent
+    public class CmdRemoveSelectedTester
     {
         [Fact]
         private void function_runner()
@@ -20,7 +20,14 @@ namespace AppLayerTesting
         public void CmdRemoveSelected()
         {
             List<Star> starList = new List<Star>();
-            testSetup(true);
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdRemoveSelectedTester)};
+            Drawing drawing = new Drawing();
+            CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80), IsSelected = true }));
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(200,310), Size = new Size(80, 80) }));
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(240,150), Size = new Size(80, 80) }));
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(350, 300), Size = new Size(80, 80) }));
+            Assert.Equal(4, drawing.StarCount);
 
             Command removeSelectedCmd = commandFactory.Create("REMOVE");
             Assert.NotNull(removeSelectedCmd);
@@ -28,29 +35,30 @@ namespace AppLayerTesting
             removeSelectedCmd.Execute();
 
             // Assert the predicated results            
-            starList = drawing.GetSelected(); 
-            Assert.Equal(0, starList.Count);  
+            starList = drawing.GetObjects(); 
+            Assert.Equal(3, starList.Count);  
         }
 
         public void CmdRemoveSelected_UNDO()
         {
             List<Star> starList = new List<Star>();
-            testSetup(true);
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdRemoveSelectedTester)};
+            Drawing drawing = new Drawing();
+            CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) }));
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(200,310), Size = new Size(80, 80) }));
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(240,150), Size = new Size(80, 80) }));
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(350, 300), Size = new Size(80, 80) }));
+            Assert.Equal(4, drawing.StarCount);
 
             Command removeSelectedCmd = commandFactory.Create("REMOVE");
             Assert.NotNull(removeSelectedCmd);
-
-            // Stimulate (Execute newCmd.Execute)
-            removeSelectedCmd.Execute();
-            starList = drawing.GetSelected(); 
-            Assert.Equal(0, starList.Count);
-
-            // Assert the predicated results
             
+            removeSelectedCmd.Execute();
             removeSelectedCmd.Undo();
 
-            starList = drawing.GetSelected(); 
-            Assert.Equal(0, starList.Count);
+            starList = drawing.GetObjects(); 
+            Assert.Equal(4, starList.Count);
         }
     }
 }

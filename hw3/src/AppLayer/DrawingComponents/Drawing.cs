@@ -183,5 +183,18 @@ namespace AppLayer.DrawingComponents
             return starList;
         }
 
+        public List<Star> GetObjects()
+        {
+            List<Star> starList = new List<Star>();
+            lock (_myLock)
+            {
+                foreach (Star star in _stars)
+                {
+                    starList.Add(star);                
+                }
+            }
+            return starList;
+        }
+
     }
 }

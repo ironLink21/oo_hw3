@@ -7,7 +7,7 @@ using AppLayer.DrawingComponents;
 
 namespace AppLayerTesting
 {
-    public class CmdMoveTester : testParent
+    public class CmdMoveTester
     {
         [Fact]
         private void function_runner()
@@ -19,7 +19,12 @@ namespace AppLayerTesting
 
         public void CmdMove_norm()
         {
-            testSetup(false);
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdMoveTester)};
+            Drawing drawing = new Drawing();
+            CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) }));
+            Assert.Equal(1, drawing.StarCount);
+
             Command moveCmd = commandFactory.Create("MOVE", new Point(10,10), new Point(30,30));
             Assert.NotNull(moveCmd);
 
@@ -31,14 +36,24 @@ namespace AppLayerTesting
 
         public void CmdMove_null()
         {
-            testSetup(false);
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdMoveTester)};
+            Drawing drawing = new Drawing();
+            CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) }));
+            Assert.Equal(1, drawing.StarCount);
+
             Command moveCmd = commandFactory.Create("MOVE");
             Assert.Equal(null, moveCmd);
         }
 
         public void CmdMove_undo() 
         {
-            testSetup(false);
+            StarFactory Starfactory = new StarFactory() {ResourceNamePattern = "AppLayerTesting.Graphics.{0}.png", ReferenceType = typeof(CmdMoveTester)};
+            Drawing drawing = new Drawing();
+            CommandFactory commandFactory = new CommandFactory() {TargetDrawing = drawing};
+            drawing.Add(Starfactory.GetStar(new StarExtrinsicState() { StarType = "Star-01", Location = new Point(10,10), Size  = new Size(80, 80) }));
+            Assert.Equal(1, drawing.StarCount);
+
             // creates star obj and stores in variable
             Command moveCmd = commandFactory.Create("MOVE", new Point(10,10), new Point(30,30));
 
