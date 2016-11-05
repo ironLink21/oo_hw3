@@ -5,7 +5,7 @@ Assign3
 
 # Working/Implemented
 command
-invoker for command pattern
+invoker for command pattern (singleton)
 flyweight
 undo patterns
 
@@ -16,9 +16,7 @@ undo patterns
 GUI
 
 # Docs
-UML diagram can be found in "./docs/hw3_class_uml.vpp" (visual paradigm file)
-// Action Diagram can be found in "./docs/hw3_class_interaction.vpp" (visual paradigm file)
-// State Diagram can be found in "./docs/hw3_class_state.vpp" (visual paradigm file)
+UML diagram can be found in "./docs/hw3_class_uml.vpp" (visual paradigm file) (this has all 3 files inside of the one project)
 
 # Dependencies
 mono

@@ -8,7 +8,7 @@ using AppLayer.DrawingComponents;
 
 namespace AppLayerTesting
 {
-    public class CmdDeselectAll
+    public class CmdDeselectAllTester
     {
         [Fact]
         private void function_runner()
